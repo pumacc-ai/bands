@@ -41,14 +41,18 @@ echo "$$" > "${PID_FILE}"
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] ── start ──────────────────────────────────"
 
 # ── Choose run mode ─────────────────────────────────────────────────────────────
-# Production: use the compiled output from build.sh / npm run build
-# Development: fall back to tsx (no build required)
-if [[ -f "server/dist/server.js" ]]; then
+# 1. server/server.js      — production tarball (build.sh stages here)
+# 2. server/dist/server.js — local npm run build output
+# 3. npx tsx               — development fallback (no build required)
+if [[ -f "server/server.js" ]]; then
   MODE="production"
+  CMD="node server/server.js"
+elif [[ -f "server/dist/server.js" ]]; then
+  MODE="production (local build)"
   CMD="node server/dist/server.js"
 else
   if ! command -v npx &>/dev/null; then
-    echo "✗  server/dist/server.js not found and npx is unavailable."
+    echo "✗  No compiled server found and npx is unavailable."
     echo "   Run  npm run build  first, or install Node.js."
     exit 1
   fi
