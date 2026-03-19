@@ -41,3 +41,5 @@ declare global {
     fbAsyncInit: () => void
   }
 }
+
+export {}

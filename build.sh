@@ -37,6 +37,8 @@ echo "→ Staging package…"
 mkdir -p "${STAGE}/server"
 cp    server/dist/server.js "${STAGE}/server/server.js"
 cp    server/schema.graphql "${STAGE}/server/schema.graphql"
+cp    start.sh              "${STAGE}/start.sh"
+chmod +x "${STAGE}/start.sh"
 
 # Minimal server package.json: points start at compiled JS, no devDeps
 node -e "
@@ -96,8 +98,8 @@ cat > "${STAGE}/.env.example" << 'EOF'
 # Server port (default: 3001)
 PORT=3001
 
-# PGlite data directory (default: ./bands-db, relative to cwd)
-# BANDS_DB_PATH=./bands-db
+# PostgreSQL connection string
+DATABASE_URL=postgresql://bands:password@localhost/bands
 EOF
 
 # ── 10. Create tarball ────────────────────────────────────────────────────────
