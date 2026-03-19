@@ -40,7 +40,7 @@ all:
                 - document-skills
     bands:
       vars:
-        ansible_user: pumacc
+        ansible_user: bands
         ui_port: 3000
         app_dir: /opt/bands
         pg_db: bands

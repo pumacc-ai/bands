@@ -1,0 +1,32 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+[[ -f ~/.profile ]] && source ~/.profile
+
+fail() { echo "ERROR: $1"; exit 1; }
+
+ARGS="-i inventory.yaml"
+
+play_book=$1
+
+if [[ -z "$play_book" ]]; then
+  echo ""
+  echo "Usage: $0 <playbook> [hosts]"
+  echo ""
+  echo "   ex: $0 setup-bands bands"
+  echo ""
+  echo "Available playbooks:"
+  ls -1 playbooks/*.yaml | sed 's|playbooks/||' | sed 's|\.yaml||' | sed 's|^|\t|'
+  echo ""
+  exit 1
+fi
+
+HOSTS=bands
+[[ -n "$2" ]] && HOSTS=$2
+
+ARGS="${ARGS} --extra-vars myhosts=${HOSTS}"
+
+[[ ! -f "playbooks/${play_book}.yaml" ]] && fail "Does not exist: playbooks/${play_book}.yaml"
+
+[[ -z "$BWS_ACCESS_TOKEN" ]] && fail "BWS_ACCESS_TOKEN is not set. Run: export BWS_ACCESS_TOKEN=<machine-account-token>"
+
+BWS_ACCESS_TOKEN="$BWS_ACCESS_TOKEN" ansible-playbook ${ARGS} "playbooks/${play_book}.yaml"
