@@ -1,0 +1,13 @@
+{
+  "name": "bands",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": ["db", "server", "frontend"],
+  "scripts": {
+    "dev": "concurrently -n db,server,frontend -c blue,cyan,yellow \"npm run dev -w db\" \"npm run dev -w server\" \"npm run dev -w frontend\"",
+    "build": "npm run build -w db && npm run build -w server && npm run build -w frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

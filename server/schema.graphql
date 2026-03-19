@@ -1,0 +1,48 @@
+"""
+Bands — GraphQL API Schema
+==========================
+Manage bands, their members, and albums.
+"""
+
+type Band {
+  id:       ID!
+  name:     String!
+  genre:    String!
+  formedAt: String!
+}
+
+type Member {
+  id:     ID!
+  bandId: ID!
+  name:   String!
+  role:   String!
+}
+
+type Album {
+  id:         ID!
+  bandId:     ID!
+  title:      String!
+  releasedAt: String!
+}
+
+type Query {
+  "All bands"
+  bands: [Band!]!
+  "Single band by ID"
+  band(id: ID!): Band
+  "Members of a band"
+  members(bandId: ID!): [Member!]!
+  "Albums of a band"
+  albums(bandId: ID!): [Album!]!
+}
+
+type Mutation {
+  "Create a new band"
+  createBand(id: ID!, name: String!, genre: String!): Band!
+  "Add a member to a band"
+  addMember(id: ID!, bandId: ID!, name: String!, role: String!): Member!
+  "Add an album to a band"
+  addAlbum(id: ID!, bandId: ID!, title: String!, releasedAt: String!): Album!
+  "Delete a band and all its members/albums"
+  deleteBand(id: ID!): Boolean!
+}

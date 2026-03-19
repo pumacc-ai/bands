@@ -1,0 +1,35 @@
+.bands-page {
+  max-width: 640px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
+
+.bands-page h1 { font-size: 36px; margin-bottom: 24px; }
+
+.back { display: inline-block; margin-bottom: 16px; color: #888; font-size: 14px; }
+
+.create-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.create-form input { flex: 1; min-width: 140px; }
+
+.band-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+.band-list li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  padding: 14px 18px;
+  transition: border-color 0.2s;
+}
+.band-list li a:hover { border-color: #7c3aed; text-decoration: none; }
+
+.band-name { font-size: 16px; font-weight: 600; color: #e8e8e8; }
+.band-genre { font-size: 13px; color: #7c3aed; }
+.empty { color: #555; font-style: italic; padding: 12px; }

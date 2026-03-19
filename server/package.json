@@ -1,0 +1,25 @@
+{
+  "name": "@bands/server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch server.ts",
+    "start": "tsx server.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@bands/db": "*",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "graphql": "^16.13.0",
+    "graphql-http": "^1.22.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.10.1",
+    "tsx": "^4.19.2",
+    "typescript": "~5.9.3"
+  }
+}
