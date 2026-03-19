@@ -6,6 +6,9 @@
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
     "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "types": ["vite/client", "google.maps"],
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },

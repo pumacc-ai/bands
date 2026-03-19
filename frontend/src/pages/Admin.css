@@ -1,0 +1,95 @@
+.admin-page {
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
+
+.admin-back {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #888;
+  font-size: 14px;
+}
+
+.admin-title {
+  font-size: 36px;
+  margin-bottom: 32px;
+  background: linear-gradient(120deg, #a78bfa, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.admin-section {
+  background: #12121e;
+  border: 1px solid #1e1e2e;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.admin-section h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.admin-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-search-bar input {
+  flex: 1;
+  font-size: 15px;
+  padding: 10px 14px;
+}
+
+@keyframes admin-spin {
+  to { transform: rotate(360deg); }
+}
+
+.admin-spinner {
+  display: inline-block;
+  font-size: 20px;
+  color: #7c3aed;
+  animation: admin-spin 1s linear infinite;
+  flex-shrink: 0;
+}
+
+.admin-band-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-band-row {
+  display: grid;
+  grid-template-columns: 1fr 120px 1fr;
+  align-items: center;
+  gap: 12px;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: border-color 0.15s;
+  text-decoration: none !important;
+}
+
+.admin-band-row:hover { border-color: #7c3aed; }
+
+.admin-band-name  { font-size: 15px; font-weight: 600; color: #e8e8e8; }
+.admin-band-genre { font-size: 13px; color: #7c3aed; text-align: center; }
+.admin-band-id    { font-size: 11px; color: #444; font-family: monospace; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.admin-empty {
+  color: #555;
+  font-style: italic;
+  padding: 8px 0;
+  font-size: 14px;
+}

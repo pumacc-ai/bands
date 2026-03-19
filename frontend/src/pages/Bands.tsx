@@ -18,8 +18,8 @@ export default function Bands() {
   const create = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!name.trim()) return
-    await gql('mutation($id:ID!,$name:String!,$genre:String!){ createBand(id:$id,name:$name,genre:$genre){ id } }', {
-      id: crypto.randomUUID(), name, genre,
+    await gql('mutation($name:String!,$genre:String!){ createBand(name:$name,genre:$genre){ id } }', {
+      name, genre,
     })
     setName(''); setGenre('')
     load()

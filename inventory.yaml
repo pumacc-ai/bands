@@ -1,0 +1,57 @@
+all:
+  children:
+    local:
+      hosts:
+        localhost:
+          ansible_connection: local
+          # System packages installed via brew (macOS) or apt/dnf/yum (Linux)
+          packages:
+            - jq
+            - maven
+          # Global npm packages
+          npm_packages:
+            - "@anthropic-ai/claude-code"
+          # Bitwarden Secrets Manager UUID for the GitHub PAT.
+          # Leave empty to skip writing GITHUB_TOKEN to ~/.profile.
+          bw_secret_github_token: ""
+          # Claude Code plugin marketplaces and the plugins to install from each.
+          claude_marketplaces:
+            - name: claude-plugins-official
+              repo: anthropics/claude-plugins-official
+              plugins:
+                - commit-commands
+                - feature-dev
+                - code-review
+                - pr-review-toolkit
+                - hookify
+                - plugin-dev
+                - claude-code-setup
+                - claude-md-management
+                - frontend-design
+                - skill-creator
+                - playground
+                - ralph-loop
+                - code-simplifier
+                - learning-output-style
+                - explanatory-output-style
+            - name: anthropic-agent-skills
+              repo: anthropics/skills
+              plugins:
+                - document-skills
+    bands:
+      vars:
+        ansible_user: pumacc
+        ui_port: 3000
+        app_dir: /opt/bands
+        pg_db: bands
+        pg_user: bands
+      hosts:
+        bands.pumacc.com:
+          ansible_host: "138.197.51.150"
+          web_title: "Bands"
+          # UUIDs of Bitwarden Secrets Manager secrets (BWS_ACCESS_TOKEN must be set).
+          bw_google_client_id: ""
+          bw_google_client_secret: ""
+          bw_pg_password: ""
+          google_callback_url: "https://bands.pumacc.com/auth/google/callback"
+          session_secret: ""

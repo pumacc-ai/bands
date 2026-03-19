@@ -1,0 +1,6 @@
+[submodule "local"]
+	path = local
+	url = git@github.com:pumacc-ai/local.git
+[submodule "playbooks"]
+	path = playbooks
+	url = git@github.com:pumacc-ai/playbooks.git

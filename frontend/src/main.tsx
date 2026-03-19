@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App.tsx'
 import Bands from './pages/Bands.tsx'
 import Band from './pages/Band.tsx'
+import Admin from './pages/Admin.tsx'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<App />} />
         <Route path="/bands" element={<Bands />} />
         <Route path="/bands/:id" element={<Band />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
