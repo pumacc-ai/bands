@@ -1,0 +1,154 @@
+/* ── Data Deletion Instructions Page ────────────────────────────────────── */
+
+.dd-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #d1d5db;
+  font-family: system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.dd-header {
+  background: #111;
+  border-bottom: 1px solid #1f1f1f;
+  padding: 28px 40px 24px;
+  max-width: 780px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.dd-back {
+  display: inline-block;
+  color: #7c3aed;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  transition: color 0.15s;
+}
+.dd-back:hover { color: #a78bfa; }
+
+.dd-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f9fafb;
+  margin: 0 0 6px;
+}
+
+.dd-meta {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ── Body ───────────────────────────────────────────────────────────────── */
+.dd-body {
+  max-width: 780px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 36px 40px;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.dd-lead {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ── Sections ───────────────────────────────────────────────────────────── */
+.dd-section {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid #1f1f1f;
+}
+
+.dd-section:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.dd-h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f9fafb;
+  margin: 0 0 14px;
+}
+
+.dd-section p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #9ca3af;
+  margin: 0 0 12px;
+}
+.dd-section p:last-child { margin-bottom: 0; }
+
+/* ── List ───────────────────────────────────────────────────────────────── */
+.dd-list {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  color: #9ca3af;
+  font-size: 15px;
+  line-height: 1.75;
+}
+.dd-list li { margin-bottom: 6px; }
+
+/* ── CTA button ─────────────────────────────────────────────────────────── */
+.dd-action-btn {
+  display: inline-block;
+  margin-top: 8px;
+  background: #7c3aed;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.dd-action-btn:hover { background: #6d28d9; }
+
+/* ── Links ──────────────────────────────────────────────────────────────── */
+.dd-link {
+  color: #7c3aed;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.dd-link:hover { color: #a78bfa; text-decoration: underline; }
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+.dd-footer {
+  border-top: 1px solid #1f1f1f;
+  padding: 20px 40px;
+  max-width: 780px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dd-sep { color: #374151; font-size: 12px; }
+
+.dd-footer-link {
+  font-size: 13px;
+  color: #6b7280 !important;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.dd-footer-link:hover { color: #a78bfa !important; }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .dd-header,
+  .dd-body,
+  .dd-footer { padding-left: 20px; padding-right: 20px; }
+  .dd-title { font-size: 22px; }
+}

@@ -24,12 +24,18 @@ export async function migrate() {
 
   await db.query(`
     CREATE TABLE IF NOT EXISTS bands (
-      id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-      name       TEXT        NOT NULL,
-      genre      TEXT        NOT NULL DEFAULT '',
-      formed_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+      name             TEXT        NOT NULL,
+      genre            TEXT        NOT NULL DEFAULT '',
+      registrant_email TEXT,
+      formed_at        TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
+  `)
+
+  // Idempotent column addition for existing deployments
+  await db.query(`
+    ALTER TABLE bands ADD COLUMN IF NOT EXISTS registrant_email TEXT
   `)
 
   await db.query(`
@@ -69,7 +75,8 @@ export async function migrate() {
 
 // ── Shared types ───────────────────────────────────────────────────────────────
 export type Band = {
-  id: string; name: string; genre: string; formed_at: string; created_at: string
+  id: string; name: string; genre: string
+  registrant_email: string | null; formed_at: string; created_at: string
 }
 export type BandEvent = {
   id: string; band_id: string | null; title: string; venue: string

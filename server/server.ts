@@ -17,7 +17,12 @@ app.use(express.json())
 const schema = buildSchema(readFileSync(join(__dirname, 'schema.graphql'), 'utf-8'))
 
 // ── Field name adapter: snake_case DB rows → camelCase GraphQL ────────────────
-const band  = (r: any) => ({ ...r, formedAt: r.formed_at,  createdAt: r.created_at })
+const band  = (r: any) => ({
+  ...r,
+  registrantEmail: r.registrant_email ?? null,
+  formedAt:        r.formed_at,
+  createdAt:       r.created_at,
+})
 const event = (r: any) => ({ ...r, bandId: r.band_id, eventDate: r.event_date, createdAt: r.created_at })
 const admin = (r: any) => ({ ...r, createdAt: r.created_at })
 const perm  = (r: any) => ({ ...r, adminId: r.admin_id, createdAt: r.created_at })
@@ -44,6 +49,14 @@ const root = {
     return r.rows.map(band)
   },
 
+  myBands: async ({ email }: { email: string }) => {
+    const r = await db.query(
+      'SELECT * FROM bands WHERE registrant_email = $1 ORDER BY created_at DESC',
+      [email],
+    )
+    return r.rows.map(band)
+  },
+
   // ── Event queries ─────────────────────────────────────────────────────────────
   events: async ({ bandId }: { bandId?: string }) => {
     const r = bandId
@@ -64,17 +77,38 @@ const root = {
   },
 
   // ── Band mutations ────────────────────────────────────────────────────────────
-  createBand: async ({ name, genre }: { name: string; genre: string }) => {
+  createBand: async ({ name, genre, registrantEmail }: {
+    name: string; genre: string; registrantEmail?: string
+  }) => {
     const r = await db.query(
-      'INSERT INTO bands (name, genre) VALUES ($1, $2) RETURNING *',
-      [name, genre],
+      'INSERT INTO bands (name, genre, registrant_email) VALUES ($1, $2, $3) RETURNING *',
+      [name, genre, registrantEmail ?? null],
     )
     return band(r.rows[0])
   },
 
+  // Admin-level delete — no ownership check
   deleteBand: async ({ id }: { id: string }) => {
     await db.query('DELETE FROM bands WHERE id = $1', [id])
     return true
+  },
+
+  // User self-service — only deletes if the email matches the registrant
+  unregisterBand: async ({ id, email }: { id: string; email: string }) => {
+    const r = await db.query(
+      'DELETE FROM bands WHERE id = $1 AND registrant_email = $2',
+      [id, email],
+    )
+    return (r.rowCount ?? 0) > 0
+  },
+
+  // Delete all bands registered by this email; returns count of deleted rows
+  deleteMyData: async ({ email }: { email: string }) => {
+    const r = await db.query(
+      'DELETE FROM bands WHERE registrant_email = $1',
+      [email],
+    )
+    return r.rowCount ?? 0
   },
 
   // ── Event mutations ───────────────────────────────────────────────────────────

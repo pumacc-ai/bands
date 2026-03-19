@@ -189,14 +189,22 @@ export default function RegisterBand() {
           <p className="rb-locked-msg">Complete Step 1 to unlock band registration.</p>
         )}
 
-        {state === 'connected' && <BandForm submitterName={profile?.name ?? ''} />}
+        {state === 'connected' && (
+          <BandForm
+            submitterName={profile?.name ?? ''}
+            submitterEmail={profile?.email ?? ''}
+          />
+        )}
       </section>
     </div>
   )
 }
 
 // ── Band registration form ─────────────────────────────────────────────────────
-function BandForm({ submitterName }: { submitterName: string }) {
+function BandForm({ submitterName, submitterEmail }: {
+  submitterName: string
+  submitterEmail: string
+}) {
   const [name, setName]   = useState('')
   const [genre, setGenre] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -205,8 +213,10 @@ function BandForm({ submitterName }: { submitterName: string }) {
     e.preventDefault()
     if (!name.trim()) return
     const { gql } = await import('../gql.ts')
-    await gql('mutation($name:String!,$genre:String!){ createBand(name:$name,genre:$genre){ id } }',
-      { name: name.trim(), genre: genre.trim() })
+    await gql(
+      'mutation($name:String!,$genre:String!,$email:String){ createBand(name:$name,genre:$genre,registrantEmail:$email){ id } }',
+      { name: name.trim(), genre: genre.trim(), email: submitterEmail || null },
+    )
     setSubmitted(true)
   }
 

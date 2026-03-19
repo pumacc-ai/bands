@@ -119,9 +119,17 @@ export default function Privacy() {
           <h2 className="priv-h2">4. Data Retention &amp; Deletion</h2>
           <p>
             Band registrations are kept for as long as the band is listed in the app.
-            You may request deletion of your band and any associated personal data at any
-            time by contacting us at the email below. We will fulfil deletion requests
-            within 30 days.
+            You may delete your band registrations and associated personal data at any
+            time using our self-service{' '}
+            <Link to="/unregister" className="priv-link">Unregister page</Link>,
+            or by contacting us at the email below. We will fulfil email deletion
+            requests within 30 days.
+          </p>
+          <p>
+            For full data deletion instructions (as required by Facebook's platform
+            policy), see our{' '}
+            <Link to="/data-deletion" className="priv-link">Data Deletion Instructions</Link>{' '}
+            page.
           </p>
         </section>
 
