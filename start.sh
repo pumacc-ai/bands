@@ -19,15 +19,24 @@ fi
 
 PORT="${PORT:-3001}"
 
-# ── Logging ──────────────────────────────────────────────────────────────────────
+# ── Logging & PID tracking ───────────────────────────────────────────────────────
 LOG_DIR="logs"
 LOG_FILE="${LOG_DIR}/server.log"
+PID_FILE="${LOG_DIR}/server.pid"
+TEE_PID_FILE="${LOG_DIR}/tee.pid"
 mkdir -p "${LOG_DIR}"
 
 # Redirect all subsequent output (stdout + stderr) through tee so every line
 # goes to both the terminal and the log file.  The redirection is applied to
 # the shell itself before exec, so the Node process inherits the same fds.
 exec > >(tee -a "${LOG_FILE}") 2>&1
+
+# Record the tee subprocess PID (available immediately after the exec redirect)
+echo "$!" > "${TEE_PID_FILE}"
+
+# exec below replaces this shell with Node; the shell PID ($$) becomes Node's PID.
+# Write it now so the PID file is valid for the running process from the start.
+echo "$$" > "${PID_FILE}"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] ── start ──────────────────────────────────"
 
@@ -55,6 +64,8 @@ echo "  Mode     : ${MODE}"
 echo "  Port     : ${PORT}"
 echo "  Database : ${DATABASE_URL%%@*}@…"   # hide credentials in output
 echo "  Log      : ${LOG_FILE}"
+echo "  PID file : ${PID_FILE}  (server)"
+echo "  PID file : ${TEE_PID_FILE}  (log tee)"
 echo ""
 
 # exec replaces the shell with the node process so signals (SIGTERM, SIGINT)
