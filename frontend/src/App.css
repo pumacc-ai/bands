@@ -93,12 +93,27 @@
 .home-footer {
   flex-shrink: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
   background: rgba(10, 10, 15, 0.97);
   border-top: 1px solid #1e1e2e;
 }
+
+.home-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-privacy-link {
+  font-size: 11px;
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.home-privacy-link:hover { color: #7c3aed; }
 
 .home-register-btn {
   background: transparent;

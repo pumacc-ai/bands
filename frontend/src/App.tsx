@@ -29,12 +29,15 @@ export default function App() {
       </div>
 
       <footer className="home-footer">
-        <Link to="/register">
-          <button className="home-register-btn">＋ Register Band</button>
-        </Link>
-        <Link to="/admin">
-          <button className="home-admin-btn">⚙ Admin</button>
-        </Link>
+        <Link to="/privacy" className="home-privacy-link">Privacy Policy</Link>
+        <div className="home-footer-actions">
+          <Link to="/register">
+            <button className="home-register-btn">＋ Register Band</button>
+          </Link>
+          <Link to="/admin">
+            <button className="home-admin-btn">⚙ Admin</button>
+          </Link>
+        </div>
       </footer>
 
     </main>

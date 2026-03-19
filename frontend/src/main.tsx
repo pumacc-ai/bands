@@ -6,6 +6,7 @@ import Bands from './pages/Bands.tsx'
 import Band from './pages/Band.tsx'
 import Admin from './pages/Admin.tsx'
 import RegisterBand from './pages/RegisterBand.tsx'
+import Privacy from './pages/Privacy.tsx'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/bands/:id" element={<Band />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/register" element={<RegisterBand />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
