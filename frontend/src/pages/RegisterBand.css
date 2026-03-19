@@ -1,0 +1,263 @@
+/* ── Page shell ─────────────────────────────────────────────────────────────── */
+.rb-page {
+  max-width: 680px;
+  margin: 48px auto;
+  padding: 0 24px 64px;
+}
+
+.rb-back {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #888;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.rb-back:hover { color: #a78bfa; }
+
+.rb-title {
+  font-size: 36px;
+  margin-bottom: 32px;
+  background: linear-gradient(120deg, #a78bfa, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Sections ────────────────────────────────────────────────────────────────── */
+.rb-section {
+  background: #12121e;
+  border: 1px solid #1e1e2e;
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 20px;
+  transition: opacity 0.2s;
+}
+
+.rb-section--locked {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.rb-section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 20px;
+}
+
+.rb-locked-msg {
+  color: #555;
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* ── Loading / spinner ────────────────────────────────────────────────────────── */
+.rb-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #888;
+  font-size: 14px;
+}
+
+@keyframes rb-spin {
+  to { transform: rotate(360deg); }
+}
+
+.rb-spinner {
+  display: inline-block;
+  font-size: 20px;
+  color: #7c3aed;
+  animation: rb-spin 1s linear infinite;
+}
+
+/* ── Login prompt ─────────────────────────────────────────────────────────────── */
+.rb-login-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.rb-login-desc {
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.55;
+  max-width: 440px;
+}
+
+/* Facebook brand button */
+.rb-fb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.rb-fb-btn:hover  { background: #1565d8; }
+.rb-fb-btn:active { transform: scale(0.97); }
+
+/* ── Profile card ─────────────────────────────────────────────────────────────── */
+.rb-profile-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.rb-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px solid #7c3aed;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.rb-profile-info {
+  flex: 1;
+  min-width: 200px;
+}
+
+.rb-profile-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e8e8e8;
+  margin-bottom: 12px;
+}
+
+.rb-profile-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 13px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.rb-profile-label {
+  color: #666;
+  min-width: 100px;
+  flex-shrink: 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding-top: 2px;
+}
+
+.rb-profile-value {
+  color: #ccc;
+  word-break: break-all;
+}
+
+.rb-profile-link {
+  color: #a78bfa;
+  word-break: break-all;
+  font-size: 13px;
+}
+.rb-profile-link:hover { color: #c4b5fd; }
+
+.rb-mono { font-family: monospace; color: #888; }
+.rb-muted { color: #555; font-style: italic; }
+
+.rb-logout-btn {
+  margin-top: auto;
+  background: transparent;
+  border: 1px solid #333;
+  color: #666;
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  align-self: flex-start;
+}
+.rb-logout-btn:hover { border-color: #7c3aed; color: #a78bfa; }
+
+/* ── Error ────────────────────────────────────────────────────────────────────── */
+.rb-error {
+  color: #f87171;
+  font-size: 14px;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+/* ── Band registration form ───────────────────────────────────────────────────── */
+.rb-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rb-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.rb-required { color: #f97316; }
+
+.rb-input {
+  font-size: 15px;
+  padding: 10px 14px;
+  background: #0f0f18;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  color: #e8e8e8;
+  transition: border-color 0.15s;
+}
+.rb-input:focus { outline: none; border-color: #7c3aed; }
+
+.rb-submit-btn {
+  align-self: flex-start;
+  background: linear-gradient(120deg, #7c3aed, #f97316);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.rb-submit-btn:hover:not(:disabled)  { opacity: 0.88; }
+.rb-submit-btn:active:not(:disabled) { transform: scale(0.97); }
+.rb-submit-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* ── Success state ────────────────────────────────────────────────────────────── */
+.rb-success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 15px;
+  color: #e8e8e8;
+}
+
+.rb-success-icon {
+  font-size: 28px;
+  color: #4ade80;
+}
+
+.rb-success-link {
+  margin-top: 8px;
+  color: #a78bfa;
+  font-size: 14px;
+}
+.rb-success-link:hover { color: #c4b5fd; }

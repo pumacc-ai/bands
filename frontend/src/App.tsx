@@ -29,6 +29,9 @@ export default function App() {
       </div>
 
       <footer className="home-footer">
+        <Link to="/register">
+          <button className="home-register-btn">＋ Register Band</button>
+        </Link>
         <Link to="/admin">
           <button className="home-admin-btn">⚙ Admin</button>
         </Link>
