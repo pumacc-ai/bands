@@ -38,7 +38,8 @@ mkdir -p "${STAGE}/server"
 cp    server/dist/server.js "${STAGE}/server/server.js"
 cp    server/schema.graphql "${STAGE}/server/schema.graphql"
 cp    start.sh              "${STAGE}/start.sh"
-chmod +x "${STAGE}/start.sh"
+cp    stop.sh               "${STAGE}/stop.sh"
+chmod +x "${STAGE}/start.sh" "${STAGE}/stop.sh"
 
 # Minimal server package.json: points start at compiled JS, no devDeps
 node -e "
