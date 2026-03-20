@@ -4,3 +4,5 @@ bands-db/
 logs/
 .env
 *.local
+*.tsbuildinfo
+vite.config.js
