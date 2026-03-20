@@ -41,7 +41,7 @@ all:
     bands:
       vars:
         bands_user: bands
-        ui_port: 3000
+        ui_port: 3001
         app_dir: /opt/bands
         pg_db: bands
         pg_user: bands
