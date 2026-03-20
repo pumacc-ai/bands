@@ -14,6 +14,11 @@ all:
           # Bitwarden Secrets Manager UUID for the GitHub PAT.
           # Leave empty to skip writing GITHUB_TOKEN to ~/.profile.
           bw_secret_github_token: ""
+          # Key=value pairs exported in ~/.profile
+          profile_vars:
+            NODE_ENV: development
+            PORT: "3001"
+            OBJC_DISABLE_INITIALIZE_FORK_SAFETY: "YES"
           # Claude Code plugin marketplaces and the plugins to install from each.
           claude_marketplaces:
             - name: claude-plugins-official
@@ -55,3 +60,8 @@ all:
           bw_pg_password: ""
           google_callback_url: "https://bands.pumacc.com/auth/google/callback"
           session_secret: ""
+          # Key=value pairs exported in ~/.profile
+          profile_vars:
+            NODE_ENV: production
+            PORT: "3001"
+            DATABASE_URL: ""

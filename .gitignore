@@ -1,6 +1,32 @@
 # ── Project ────────────────────────────────────────────────────────────────────
 node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
 dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+vite.config.js
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
 bands-db/
 logs/
 *.local
@@ -21,7 +47,8 @@ authorized_keys
 ._*
 .Spotlight-V100
 .Trashes
-Icon?
+ehthumbs.db
+Thumbs.db
 
 # ── Linux / Windows ────────────────────────────────────────────────────────────
 Thumbs.db
@@ -35,6 +62,16 @@ desktop.ini
 .idea/
 *.swp
 *.swo
+*~
+
+# Coverage / testing
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+*.key
+*.crt
 *.orig
 *.rej
 .project
