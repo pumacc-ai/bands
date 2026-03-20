@@ -18,6 +18,7 @@ all:
           profile_vars:
             NODE_ENV: development
             PORT: "3001"
+            OBJC_DISABLE_INITIALIZE_FORK_SAFETY: "YES"
           # Claude Code plugin marketplaces and the plugins to install from each.
           claude_marketplaces:
             - name: claude-plugins-official
