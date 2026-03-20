@@ -49,7 +49,6 @@ coverage/
 # ── Python (tooling) ──────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
-*.pyo
 .venv/
 venv/
 
