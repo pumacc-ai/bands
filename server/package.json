@@ -11,14 +11,14 @@
   "dependencies": {
     "@bands/db": "*",
     "cors": "^2.8.5",
-    "express": "^4.21.2",
+    "express": "^5.2.1",
     "graphql": "^16.13.0",
     "graphql-http": "^1.22.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
-    "@types/node": "^24.10.1",
+    "@types/node": "^25.5.0",
     "tsx": "^4.19.2",
     "typescript": "~5.9.3"
   }
