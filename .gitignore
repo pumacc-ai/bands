@@ -106,3 +106,5 @@ playbooks/.vault_pass
 *.tar.gz
 *.tgz
 *.zip
+.claude/
+facebook.txt

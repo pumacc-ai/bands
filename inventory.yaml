@@ -63,5 +63,9 @@ all:
           # Key=value pairs exported in ~/.profile
           profile_vars:
             NODE_ENV: production
-            PORT: "3001"
-            DATABASE_URL: ""
+            PORT: "{{ ui_port }}"
+            DATABASE_URL: "postgresql:///bands?user=bands&host=/var/run/postgresql"
+            GITHUB_TOKEN: bw:38ceb435-3c92-4dcf-9bc9-b4000133acf7
+            VITE_GOOGLE_MAPS_API_KEY: bw:38ceb435-3c92-4dcf-9bc9-b4000133acf7
+            VITE_FACEBOOK_APP_ID: bw:f1f9f2ee8-8812-4a62-8ab4-b4120142ed4c
+            VITE_FACEBOOK_APP_SECRET: bw:7375a29d-699e-4bb4-b010-b41201430ddb
