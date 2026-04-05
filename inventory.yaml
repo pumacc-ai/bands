@@ -54,6 +54,7 @@ all:
         bands.pumacc.com:
           ansible_host: "138.197.51.150"
           ansible_user: "bands"
+          service_user: "bands"
           web_title: "Bands"
           # UUIDs of Bitwarden Secrets Manager secrets (BWS_ACCESS_TOKEN must be set).
           bw_google_client_id: ""
